@@ -7,9 +7,13 @@ Mutation of samples used the fixbb program of Rosetta. Minimization of method is
 
 The code is organized as follows:
 vdwid.py: main program for calculating Van der Waals interaction energy of wild type and mutation samples.
+
 change_filt_type.py: changeing PDB file type between Amber and Rosetta
+
 tools.py: tools for read Amber's parmtop and crd files.
+
 inputfile: Necessary input files
+
 examples: example amber PDB parm file, crd file, mutation file
 
 **Reference:**
