@@ -16,13 +16,14 @@ examples: example amber PDB parm file, crd file, mutation file<br>
 
 If you use this code in any future publications, please cite this using Wang, B., et al. (2020). "A method for efficient calculation of thermal stability of proteins upon point mutations." Physical Chemistry Chemical Physics 22(16): 8461-8466.
 
-**Use vdwp:**<br>
+**Use vdwp:**
+
 Necessary third-party software:<br>
 Amber (amber16,18 were tested)<br>
 Rosetta2017<br>
 Python3<br>
 
-calculating protein stability:<br>
+Calculating protein stability:<br>
 python vdwid.py parm.top md.crd frames muta.txt<br>
 parm.top: Parm file of Amber<br>
 md.crd: Coordinate file of Amber<br>
