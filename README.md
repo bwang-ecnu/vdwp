@@ -5,29 +5,26 @@ Mutation of samples used the fixbb program of Rosetta. Minimization of method is
 
 **Code structure:**
 
-The code is organized as follows:
+The code is organized as follows:<br>
 vdwid.py: main program for calculating Van der Waals interaction energy of wild type and mutation samples.<br>
 change_filt_type.py: changeing PDB file type between Amber and Rosetta.<br>
 tools.py: tools for read Amber's parmtop and crd files.<br>
-
-inputfile: Necessary input files
-
-examples: example amber PDB parm file, crd file, mutation file
+inputfile: Necessary input files<br>
+examples: example amber PDB parm file, crd file, mutation file<br>
 
 **Reference:**
 
 If you use this code in any future publications, please cite this using Wang, B., et al. (2020). "A method for efficient calculation of thermal stability of proteins upon point mutations." Physical Chemistry Chemical Physics 22(16): 8461-8466.
 
-**Use vdwp:**
+**Use vdwp:**<br>
+Necessary third-party software:<br>
+Amber (amber16,18 were tested)<br>
+Rosetta2017<br>
+Python3<br>
 
-Necessary third-party software:
-Amber (amber16,18 were tested)
-Rosetta2017
-Python3
-
-calculating protein stability:
-python vdwid.py parm.top md.crd frames muta.txt
-parm.top: Parm file of Amber
-md.crd: Coordinate file of Amber
-frames: how many frames you want used for calculating energy
-muta.txt: mutation information file
+calculating protein stability:<br>
+python vdwid.py parm.top md.crd frames muta.txt<br>
+parm.top: Parm file of Amber<br>
+md.crd: Coordinate file of Amber<br>
+frames: how many frames you want used for calculating energy<br>
+muta.txt: mutation information file<br>
