@@ -1,4 +1,4 @@
-<font size=10 face="About vdwp">黑体字</font>
+<font size=10 face="黑体">**Abount vdwp**</font>
 **About vdwp**
 
 The vdwp package is writen in python which is designed for efficient prediction of the relative stability of a protein due to a single amino acid point mutation.In this approach, we calculate the free energy change due to an arbitrary point mutation of a protein from a single MD trajectory of the wild type protein. The method is tested on 27 diverse protein systems with a total of 853 mutations and the calculated relative free energies show a generally good correlation with the experimental values (a correlation coefficient of 0.63).
