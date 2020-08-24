@@ -1,0 +1,6 @@
+minimise ras-raf
+ &cntrl
+  imin=1,maxcyc=500,ncyc=300,
+  cut=8.0,ntb=1,
+  ntpr=100
+ /
