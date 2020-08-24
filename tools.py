@@ -83,9 +83,9 @@ def Readtrj(Natom,filename):
     lines=open(filename,'r').readlines()
     lines=lines[1:]
     num=int(math.ceil(Natom*3/10.)+1)
-    print('num:',num)
+    #print('num:',num)
     Nframe=len(lines)/num
-    print('Nframe:',Nframe)
+    #print('Nframe:',Nframe)
     xcrd=[];ycrd=[];zcrd=[]
     crd1=[]
     rows=math.ceil(Natom*float(3)/10.0)

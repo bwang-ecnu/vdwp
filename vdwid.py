@@ -8,20 +8,21 @@ from change_file_type import AtoR,RtoA
 from tools import Readtrj,Readparm
 
 class vdwid(object):
-    """"This is the main class for vdwP prediction
+    """This is the main class for vdwP prediction
     top,crd,expttxt,mutaframes is the Parmtop file, MD crd file, mutation file and the frames you want to use 
-    """"
-    def __init__(self):
-        self.top = 'com.parm7'  
-        self.crd = 'equil.mdcrd'
-        self.expttxt = 'expt.txt'
+    """
+    def __init__(self,top,crd,mutainfo,frames,prod):
+        self.top = top #'./example/1stn.parm7'  
+        self.crd = crd #'./example/md.crd'
+        self.expttxt = mutainfo #'expt.txt'
         self.mainpath = os.getcwd()
-        self.mutaframes = 200
+        self.mutaframes = int(frames) #10
         self.parall = True
+        self.prod = int(prod)
         
     def _findfile(self,path,label):
-        """"find files that have the same suffix
-        """"
+        """find files that have the same suffix
+        """
         files=[];filenames=os.listdir(path)
         for name in filenames:
             if os.path.splitext(name)[0]==str(label):
@@ -29,11 +30,11 @@ class vdwid(object):
         return files
     
     def main(self):
-        """"Whether to use parallel computing
-        """"
+        """Whether to use parallel computing
+        """
         lines=open(self.expttxt,'r').readlines()
         if self.parall:
-            pool=Pool(28)
+            pool=Pool(self.prod)
             pool.map(self.mutatraj,lines)
             pool.close()
             pool.join()
@@ -42,8 +43,8 @@ class vdwid(object):
                 self.mutatraj(line)
 
     def minimize(self,amberpdbpath,pdbfile,amberminpath):
-        """"Minimize the mutation frame
-        """"
+        """Minimize the mutation frame
+        """
         minfile=os.path.join(self.mainpath,'min.in')
         res='';pdbname=os.path.join(amberpdbpath,pdbfile);leap=os.path.join(amberpdbpath,'leap.in')
         top=os.path.join(amberpdbpath,pdbfile+'.prmtop');crd=os.path.join(amberpdbpath,pdbfile+'.inpcrd')
@@ -69,8 +70,8 @@ class vdwid(object):
         os.system('ambpdb -p '+top+'stri -c '+rst+'stri > '+amberminpath+'/'+pdbfile+'.pdb')
         
     def mutatraj(self,line):
-        """"use rosetta program fixbb to make mutation frame
-        """"
+        """use rosetta program fixbb to make mutation frame
+        """
         line=line.strip().split()
         no=line[1];mutares=line[2]
         typelines=open(self.mainpath+'/A-R.dat','r').readlines()  
@@ -112,8 +113,8 @@ class vdwid(object):
         self.calint(no,mutares,'muta')
         
     def calint(self,no,mutares,choice):
-        """"calculate Van der Waals interaction energy of the wild and mutation frame 
-        """"
+        """calculate Van der Waals interaction energy of the wild and mutation frame 
+        """
         if choice=='wild':
             iac,ico,cna,cnb,Ntype,charge,Natom,Nres,resname,resid,atomname,endihe=Readparm(self.top)
             xcrd,ycrd,zcrd=Readtrj(Natom,self.crd)
@@ -168,5 +169,6 @@ class vdwid(object):
 
 if __name__=='__main__':
     print('###########Welcome To vdwP################')
-    VDWID=vdwid()
+    top=argv[1];crd=argv[2];mutainfo=argv[3];frames=argv[4];prod=argv[5]
+    VDWID=vdwid(top,crd,mutainfo,frames,prod)
     VDWID.main()
