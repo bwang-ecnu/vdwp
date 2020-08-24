@@ -9,8 +9,8 @@ The code is organized as follows:<br>
 vdwid.py: main program for calculating Van der Waals interaction energy of wild type and mutation samples.<br>
 change_filt_type.py: changeing PDB file type between Amber and Rosetta.<br>
 tools.py: tools for read Amber's parmtop and crd files.<br>
-inputfile: Necessary input files<br>
-examples: example amber PDB parm file, crd file, mutation file<br>
+A-R.dat: file for atom type changing betweem Amber and Rosetta.<br>
+examples: example amber PDB parm file, crd file, mutation file.<br>
 
 **Reference:**
 
@@ -23,9 +23,18 @@ Amber (amber16,18 were tested)<br>
 Rosetta2017<br>
 Python3<br>
 
+Settings environment variable:<br>
+For Amber:<br>
+export AMBERHOME=/home/wang/soft/amber16/<br>
+source $AMBERHOME/amber.sh<br>
+export PATH=$PATH:$AMBERHOME/bin<br>
+
+For Rosetta:<br>
+export PATH=$PATH:/home/wang/soft/rosetta/rosetta_bin_linux_2016.13.58602_bundle/main/source/bin<br>
+
 Calculating protein stability:<br>
-python vdwid.py parm.top md.crd frames muta.txt<br>
-parm.top: Parm file of Amber<br>
+python vdwid.py ./example/1stn.parm7 ./exampel/md.crd ./example/mutainfo.txt 10 4<br>
+1stn.parm7: Parm file of Amber<br>
 md.crd: Coordinate file of Amber<br>
 frames: how many frames you want used for calculating energy<br>
-muta.txt: mutation information file<br>
+mutainfo.txt: mutation information file(pdbid residue_Number mutant_residue)<br>
