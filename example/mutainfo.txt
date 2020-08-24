@@ -1,0 +1,4 @@
+1stn 3 A
+1stn 3 G
+1stn 3 K
+1stn 3 Y
