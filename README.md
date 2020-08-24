@@ -35,6 +35,8 @@ export PATH=$PATH:/home/wang/soft/rosetta/rosetta_bin_linux_2016.13.58602_bundle
 Calculating protein stability:<br>
 python vdwid.py ./example/1stn.parm7 ./exampel/md.crd ./example/mutainfo.txt 10 4<br>
 1stn.parm7: Parm file of Amber<br>
+A-R.dat: Atom type changeing between Amber and Rosetta<br>
+min.in: Input file for minimization for Amber force filed<br>
 md.crd: Coordinate file of Amber<br>
-frames: how many frames you want used for calculating energy<br>
-mutainfo.txt: mutation information file(pdbid residue_Number mutant_residue)<br>
+frames: How many frames you want used for calculating energy<br>
+mutainfo.txt: Mutation information file(pdbid residue_Number mutant_residue)<br>
